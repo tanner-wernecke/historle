@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 // ── Puzzle loading ──────────────────────────────────────────────────────────
 // Puzzles are pre-generated nightly by the GitHub Action and stored as
@@ -378,12 +378,18 @@ function ChronicleRound({ data, onComplete }) {
   const [shake, setShake] = useState(false);
   const submitted = !!result;
 
+  // Refs for touch drag state — we use refs so touch handlers
+  // always see current values without needing re-renders mid-drag
+  const touchDragIdx = useRef(null);
+  const touchTargetIdx = useRef(null);
+  const itemsRef = useRef(items);
+  useEffect(() => { itemsRef.current = items; }, [items]);
+
   useEffect(() => {
     const rng = seededRandom(getTodaySeed()+1);
     setItems([...data.events].sort(()=>rng()-0.5));
   }, [data]);
 
-  const over = (e,i) => { e.preventDefault(); if(dragIdx===null||dragIdx===i)return; const n=[...items]; const[m]=n.splice(dragIdx,1); n.splice(i,0,m); setItems(n); setDragIdx(i); };
   const check = () => {
     const sorted=[...items].sort((a,b)=>a.year-b.year);
     const ok=items.every((x,i)=>x.id===sorted[i].id);
@@ -393,14 +399,67 @@ function ChronicleRound({ data, onComplete }) {
     else{setShake(true);setTimeout(()=>setShake(false),600);}
   };
 
+  // ── Touch handlers ──────────────────────────────────────────
+  const handleTouchStart = (e, i) => {
+    touchDragIdx.current = i;
+    touchTargetIdx.current = i;
+    setDragIdx(i);
+  };
+
+  const handleTouchMove = (e) => {
+    e.preventDefault(); // prevent scroll while dragging
+    const touch = e.touches[0];
+    const el = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (!el) return;
+    const row = el.closest('[data-sortidx]');
+    if (!row) return;
+    const targetIdx = parseInt(row.dataset.sortidx, 10);
+    if (isNaN(targetIdx) || targetIdx === touchTargetIdx.current) return;
+    touchTargetIdx.current = targetIdx;
+    const from = touchDragIdx.current;
+    const next = [...itemsRef.current];
+    const [moved] = next.splice(from, 1);
+    next.splice(targetIdx, 0, moved);
+    touchDragIdx.current = targetIdx;
+    setItems(next);
+    setDragIdx(targetIdx);
+  };
+
+  const handleTouchEnd = () => {
+    touchDragIdx.current = null;
+    touchTargetIdx.current = null;
+    setDragIdx(null);
+  };
+
+  // ── Mouse drag handlers (desktop fallback) ──────────────────
+  const handleDragOver = (e, i) => {
+    e.preventDefault();
+    if (dragIdx === null || dragIdx === i) return;
+    const next = [...items];
+    const [moved] = next.splice(dragIdx, 1);
+    next.splice(i, 0, moved);
+    setItems(next);
+    setDragIdx(i);
+  };
+
   if(!items.length)return null;
   return (
     <div className="round-wrap">
       <div className="rh"><span className="rbadge">01</span><div><h2 className="rtitle">Chronicle</h2><p className="rsub">Drag events into chronological order</p></div></div>
       <div className={`clist ${shake?"shake":""}`}>
         {items.map((item,i)=>(
-          <div key={item.id} className={`citem ${dragIdx===i?"dragging":""}`} draggable
-            onDragStart={()=>setDragIdx(i)} onDragOver={e=>over(e,i)} onDrop={()=>setDragIdx(null)}>
+          <div
+            key={item.id}
+            data-sortidx={i}
+            className={`citem ${dragIdx===i?"dragging":""}`}
+            draggable
+            onDragStart={()=>setDragIdx(i)}
+            onDragOver={e=>handleDragOver(e,i)}
+            onDrop={()=>setDragIdx(null)}
+            onTouchStart={e=>handleTouchStart(e,i)}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <span className="dhandle">⠿</span>
             <span className="etext">{item.text}</span>
             {submitted&&<span className="eyear">{fmtYear(item.year)}</span>}
@@ -594,7 +653,7 @@ export default function Historle() {
         .rtitle{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;line-height:1.1;}
         .rsub{color:var(--sep);font-style:italic;font-size:0.88rem;margin-top:0.15rem;}
         .clist{display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.3rem;}
-        .citem{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 0.9rem;background:white;border:1.5px solid var(--pd);border-radius:4px;cursor:grab;user-select:none;transition:transform 0.15s,box-shadow 0.15s,border-color 0.15s;}
+        .citem{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 0.9rem;background:white;border:1.5px solid var(--pd);border-radius:4px;cursor:grab;user-select:none;touch-action:none;transition:transform 0.15s,box-shadow 0.15s,border-color 0.15s;}
         .citem:hover{border-color:var(--sepl);box-shadow:0 2px 6px var(--sh);}
         .citem.dragging{opacity:0.5;transform:scale(0.97);}
         .dhandle{color:var(--pd);font-size:1rem;flex-shrink:0;}
