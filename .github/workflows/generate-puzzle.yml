@@ -1,0 +1,35 @@
+name: Generate Daily Puzzle
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 1am UTC daily (gives a buffer after midnight)
+  workflow_dispatch:      # allow manual trigger from GitHub UI
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write     # needed to commit the puzzle file
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate puzzle
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-puzzle.js
+
+      - name: Commit and push puzzle
+        run: |
+          git config user.name "Historle Bot"
+          git config user.email "bot@historle.game"
+          git add public/puzzles/
+          git diff --staged --quiet || git commit -m "puzzle: $(date -u +%Y-%m-%d)"
+          git push
