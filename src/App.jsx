@@ -24,7 +24,32 @@ const FALLBACK_PUZZLES = [
       { id: 5, text: "American Declaration of Independence signed", year: 1776 },
     ]},
     eracle: { clues: ["A great wall was begun by a dynasty to repel northern invaders","It stretches across a vast frontier in East Asia","The Ming dynasty greatly expanded and fortified this structure"], answer_year: 1368, event_name: "Ming Dynasty begins Great Wall expansion", explanation: "The Ming Dynasty, beginning in 1368, undertook the most ambitious construction of the Great Wall, transforming it into the iconic brick-and-stone structure known today." },
-    borderle: { empire_name: "Mongol Empire", time_period: "at its peak in 1279 AD", clues: ["The largest contiguous land empire in history","Originated on the steppes of Central Asia","Founded by a ruler known for uniting nomadic tribes","Stretched from the Pacific Ocean to Eastern Europe","Its founder's name means 'Universal Ruler'"], fun_fact: "At its peak, the Mongol Empire covered over 24 million square kilometers and ruled roughly a quarter of the world's population.", options: ["Mongol Empire","Ottoman Empire","Tang Dynasty","Timurid Empire","Khwarazmian Empire","Yuan Dynasty"] }
+    borderle: {
+      empire_name: "Mongol Empire", time_period: "at its peak in 1279 AD", year_label: "1279 AD",
+      fun_fact: "At its peak, the Mongol Empire covered over 24 million square kilometers and ruled roughly a quarter of the world's population.",
+      options: ["Mongol Empire","Ottoman Empire","Tang Dynasty","Timurid Empire","Khwarazmian Empire","Yuan Dynasty"],
+      geojson: { type:"Feature", properties:{}, geometry:{ type:"Polygon", coordinates:[[
+        [135,53],[128,48],[121,42],[116,38],[108,32],[100,28],[94,24],[88,26],[80,30],[72,32],[64,36],[56,38],[48,40],[42,44],[36,46],[30,48],[26,50],[24,54],[28,58],[36,58],[44,54],[52,52],[60,50],[68,46],[76,44],[84,42],[92,46],[100,50],[108,52],[116,54],[124,54],[130,52],[135,53]
+      ]]}}
+    },
+    figurle: {
+      name: "Genghis Khan",
+      birth_year: 1162, death_year: 1227,
+      clues: [
+        "A ruler born on the steppes of Central Asia in the 12th century",
+        "He united warring nomadic tribes through a combination of military genius and political cunning",
+        "His conquests created the largest contiguous land empire in history"
+      ],
+      fun_fact: "Genghis Khan's descendants ruled vast swaths of Eurasia for generations, and genetic studies suggest roughly 0.5% of the world's male population today descends from him.",
+      options: ["Genghis Khan", "Timur", "Attila the Hun", "Kublai Khan", "Ögedei Khan", "Subutai"]
+    },
+    duelle: { pairs: [
+      { id:1, a:{ text:"Julius Caesar assassinated in Rome", year:-44 }, b:{ text:"Muhammad's first revelation in Mecca", year:610 } },
+      { id:2, a:{ text:"Fall of Constantinople to the Ottomans", year:1453 }, b:{ text:"Columbus reaches the Americas", year:1492 } },
+      { id:3, a:{ text:"Great Wall of China construction begins", year:-221 }, b:{ text:"Construction of the Colosseum in Rome", year:72 } },
+      { id:4, a:{ text:"Black Death arrives in Europe", year:1347 }, b:{ text:"Martin Luther posts his 95 Theses", year:1517 } },
+      { id:5, a:{ text:"American Declaration of Independence", year:1776 }, b:{ text:"French Revolution begins", year:1789 } },
+    ]}
   },
   {
     chronicle: { events: [
@@ -35,7 +60,14 @@ const FALLBACK_PUZZLES = [
       { id: 5, text: "French Revolution begins with storming of Bastille", year: 1789 },
     ]},
     eracle: { clues: ["A monumental structure was built to honor the dead in a desert land","Workers numbering in the tens of thousands toiled for decades","It remains one of the Seven Wonders of the Ancient World"], answer_year: -2560, event_name: "Great Pyramid of Giza completed", explanation: "The Great Pyramid of Giza, built for Pharaoh Khufu around 2560 BCE, stood as the world's tallest man-made structure for over 3,800 years." },
-    borderle: { empire_name: "Roman Empire", time_period: "at its peak under Trajan in 117 AD", clues: ["Centered on a city famously built on seven hills","Its legal system forms the basis of many modern laws","At its height it encircled an entire inland sea","Its legions used a distinctive rectangular shield called the scutum","Julius Caesar was one of its most famous leaders"], fun_fact: "At its height, the Roman Empire had a population of approximately 70 million people — about 21% of the world's total population at the time.", options: ["Roman Empire","Byzantine Empire","Carthaginian Empire","Macedonian Empire","Parthian Empire","Sassanid Empire"] }
+    borderle: {
+      empire_name: "Roman Empire", time_period: "at its peak under Trajan in 117 AD", year_label: "117 AD",
+      fun_fact: "At its height, the Roman Empire had a population of approximately 70 million people — about 21% of the world's total population at the time.",
+      options: ["Roman Empire","Byzantine Empire","Carthaginian Empire","Macedonian Empire","Parthian Empire","Sassanid Empire"],
+      geojson: { type:"Feature", properties:{}, geometry:{ type:"Polygon", coordinates:[[
+        [-5,36],[2,37],[8,37],[12,44],[14,48],[16,48],[20,46],[24,44],[28,42],[34,38],[38,36],[40,32],[38,28],[34,24],[30,22],[28,20],[32,24],[36,30],[40,36],[42,38],[44,36],[42,34],[38,30],[36,26],[34,22],[30,18],[26,14],[22,10],[18,8],[14,12],[10,16],[6,20],[2,24],[-2,28],[-4,32],[-5,36]
+      ]]}}
+    }
   },
   {
     chronicle: { events: [
@@ -46,7 +78,32 @@ const FALLBACK_PUZZLES = [
       { id: 5, text: "Wright Brothers achieve first powered flight at Kitty Hawk", year: 1903 },
     ]},
     eracle: { clues: ["An island nation's powerful navy defeated a much larger fleet","The battle took place in Asian waters in the early 20th century","It was the first time an Asian power defeated a European one in modern warfare"], answer_year: 1905, event_name: "Battle of Tsushima — Japan defeats Russia", explanation: "Japan's decisive naval victory over Russia at Tsushima in 1905 shocked the world and signaled the rise of Japan as a major world power." },
-    borderle: { empire_name: "Ottoman Empire", time_period: "at its peak in the 16th century", clues: ["Controlled territory across three continents for over 600 years","Founded by a dynasty of Turkic rulers in Anatolia","Captured a great Christian city in 1453, ending an ancient empire","Its ruler held the title of Caliph and Sultan","It bordered the Habsburg Empire to the west and Persia to the east"], fun_fact: "The Ottoman Empire lasted from 1299 to 1922, making it one of the longest-lasting empires in history at over 600 years.", options: ["Ottoman Empire","Safavid Empire","Mamluk Sultanate","Byzantine Empire","Timurid Empire","Mughal Empire"] }
+    borderle: {
+      empire_name: "Ottoman Empire", time_period: "at its peak in the 16th century", year_label: "1566 AD",
+      fun_fact: "The Ottoman Empire lasted from 1299 to 1922, making it one of the longest-lasting empires in history at over 600 years.",
+      options: ["Ottoman Empire","Safavid Empire","Mamluk Sultanate","Byzantine Empire","Timurid Empire","Mughal Empire"],
+      geojson: { type:"Feature", properties:{}, geometry:{ type:"Polygon", coordinates:[[
+        [14,46],[18,44],[22,42],[26,40],[30,38],[34,36],[38,34],[40,32],[42,30],[44,28],[46,24],[44,20],[40,18],[36,16],[32,14],[28,12],[24,14],[20,16],[16,18],[12,20],[10,24],[8,28],[6,32],[8,36],[10,40],[12,44],[14,46]
+      ]]}}
+    },
+    figurle: {
+      name: "Cleopatra VII",
+      birth_year: -69, death_year: -30,
+      clues: [
+        "A ruler of a North African kingdom in the 1st century BCE",
+        "She was the last active ruler of her dynasty and famously fluent in many languages",
+        "She formed powerful alliances with two of Rome's most famous generals"
+      ],
+      fun_fact: "Despite her Egyptian associations, Cleopatra was actually of Macedonian Greek descent and was the first ruler of her dynasty to learn the Egyptian language.",
+      options: ["Cleopatra VII", "Nefertiti", "Hatshepsut", "Boudicca", "Zenobia of Palmyra", "Queen of Sheba"]
+    },
+    duelle: { pairs: [
+      { id:1, a:{ text:"Alexander the Great conquers Persia", year:-330 }, b:{ text:"Roman Empire reaches its greatest extent", year:117 } },
+      { id:2, a:{ text:"Magna Carta signed by King John", year:1215 }, b:{ text:"Black Death devastates Europe", year:1347 } },
+      { id:3, a:{ text:"Aztec Empire founded at Tenochtitlan", year:1325 }, b:{ text:"Spanish conquest of the Aztecs", year:1521 } },
+      { id:4, a:{ text:"Battle of Waterloo ends Napoleonic Wars", year:1815 }, b:{ text:"American Civil War ends", year:1865 } },
+      { id:5, a:{ text:"World War I armistice signed", year:1918 }, b:{ text:"United Nations founded", year:1945 } },
+    ]}
   },
   {
     chronicle: { events: [
@@ -353,10 +410,10 @@ function borderleScore(a) { return [1000,800,600,400,200,50][Math.min(a-1,5)]; }
 function ShareModal({ scores, onClose }) {
   const [copied, setCopied] = useState(false);
   const total = scores.reduce((a,b)=>a+b,0);
-  const medal = total>=2500?"🥇":total>=1800?"🥈":total>=1000?"🥉":"📜";
-  const label = total>=2500?"Historian Supreme":total>=1800?"Accomplished Scholar":total>=1000?"Apprentice Archivist":"Curious Student";
+  const medal = total>=4200?"🥇":total>=3000?"🥈":total>=1800?"🥉":"📜";
+  const label = total>=4200?"Historian Supreme":total>=3000?"Accomplished Scholar":total>=1800?"Apprentice Archivist":"Curious Student";
   const bar = s => "█".repeat(Math.round(s/200)) + "░".repeat(5-Math.round(s/200));
-  const text = `📜 Historle — ${todayString()}\n${medal} ${label} — ${total}/3000\n\n📅 Chronicle  ${bar(scores[0])} ${scores[0]}\n🎯 Eracle     ${bar(scores[1])} ${scores[1]}\n🗺️ Borderle   ${bar(scores[2])} ${scores[2]}\n\nPlay at historle.game`;
+  const text = `📜 Historle — ${todayString()}\n${medal} ${label} — ${total}/5000\n\n📅 Chronicle  ${bar(scores[0])} ${scores[0]}\n🎯 Eracle     ${bar(scores[1])} ${scores[1]}\n🗺️ Borderle   ${bar(scores[2])} ${scores[2]}\n👤 Figurle    ${bar(scores[3])} ${scores[3]}\n⚔️ Duelle     ${bar(scores[4])} ${scores[4]}\n\nPlay at historle.game`;
   const copy = async () => { await navigator.clipboard.writeText(text); setCopied(true); setTimeout(()=>setCopied(false),2000); };
   return (
     <div className="overlay" onClick={onClose}>
@@ -394,9 +451,10 @@ function ChronicleRound({ data, onComplete }) {
     const sorted=[...items].sort((a,b)=>a.year-b.year);
     const ok=items.every((x,i)=>x.id===sorted[i].id);
     const na=attempts+1; setAttempts(na);
-    if(ok){setResult({win:true,score:chronicleScore(na)});}
-    else if(na>=3){setResult({win:false,score:chronicleScore(na),correct:sorted});}
-    else{setShake(true);setTimeout(()=>setShake(false),600);}
+    const correctMask=items.map((x,i)=>x.id===sorted[i].id);
+    if(ok){setResult({win:true,score:chronicleScore(na),correctMask});}
+    else if(na>=3){setResult({win:false,score:chronicleScore(na),correct:sorted,correctMask});}
+    else{setResult(r=>({...r,correctMask,partial:true}));setShake(true);setTimeout(()=>setShake(false),600);}
   };
 
   // ── Touch handlers ──────────────────────────────────────────
@@ -447,27 +505,32 @@ function ChronicleRound({ data, onComplete }) {
     <div className="round-wrap">
       <div className="rh"><span className="rbadge">01</span><div><h2 className="rtitle">Chronicle</h2><p className="rsub">Drag events into chronological order</p></div></div>
       <div className={`clist ${shake?"shake":""}`}>
-        {items.map((item,i)=>(
-          <div
-            key={item.id}
-            data-sortidx={i}
-            className={`citem ${dragIdx===i?"dragging":""}`}
-            draggable
-            onDragStart={()=>setDragIdx(i)}
-            onDragOver={e=>handleDragOver(e,i)}
-            onDrop={()=>setDragIdx(null)}
-            onTouchStart={e=>handleTouchStart(e,i)}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            <span className="dhandle">⠿</span>
-            <span className="etext">{item.text}</span>
-            {submitted&&<span className="eyear">{fmtYear(item.year)}</span>}
-          </div>
-        ))}
+        {items.map((item,i)=>{
+          const isCorrect = result?.correctMask?.[i];
+          const showMask = result?.correctMask && !result.win;
+          return (
+            <div
+              key={item.id}
+              data-sortidx={i}
+              className={`citem ${dragIdx===i?"dragging":""} ${showMask?(isCorrect?"citem-correct":"citem-wrong"):""}`}
+              draggable={!result?.correctMask}
+              onDragStart={()=>setDragIdx(i)}
+              onDragOver={e=>handleDragOver(e,i)}
+              onDrop={()=>setDragIdx(null)}
+              onTouchStart={e=>handleTouchStart(e,i)}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              {showMask && <span className="citem-indicator">{isCorrect?"✓":"✗"}</span>}
+              {!showMask && <span className="dhandle">⠿</span>}
+              <span className="etext">{item.text}</span>
+              {result&&!result.partial&&<span className="eyear">{fmtYear(item.year)}</span>}
+            </div>
+          );
+        })}
       </div>
-      {!submitted&&<div className="arow"><span className="aleft">{3-attempts} attempt{3-attempts!==1?"s":""} left</span><button className="btnp" onClick={check}>Check Order</button></div>}
-      {submitted&&result&&(
+      {(!result||result.partial)&&<div className="arow"><span className="aleft">{3-attempts} attempt{3-attempts!==1?"s":""} left</span><button className="btnp" onClick={check}>Check Order</button></div>}
+      {result&&!result.partial&&(
         <div className={`rcard ${result.win?"win":"lose"}`}>
           <div className="ricon">{result.win?"🏆":"📜"}</div>
           <p className="rtext">{result.win?`Correct! Solved in ${attempts} attempt${attempts!==1?"s":""}.`:"The correct order was:"}</p>
@@ -495,7 +558,7 @@ function EracleRound({ data, onComplete }) {
     else{setClueIdx(Math.min(clueIdx+1,data.clues.length-1));}
   };
   const heat=d=>d===0?"🎯":d<=5?"🔥":d<=25?"♨️":d<=100?"🌡️":"🧊";
-  const dir=g=>g.year<data.answer_year?"→ later":"← earlier";
+  const dir=g=>g.year<data.answer_year?"↑ Later":"↓ Earlier";
 
   return (
     <div className="round-wrap">
@@ -507,7 +570,7 @@ function EracleRound({ data, onComplete }) {
           </div>
         ))}
       </div>
-      {guesses.length>0&&<div className="ghist">{guesses.map((g,i)=><div key={i} className="grow"><span className="gyear">{fmtYear(g.year)}</span><span className="gdiff">{heat(g.diff)} {g.diff===0?"Exact!":g.diff+" yrs off ("+dir(g)+")"}</span></div>)}</div>}
+      {guesses.length>0&&<div className="ghist">{guesses.map((g,i)=><div key={i} className="grow"><span className="gyear">{fmtYear(g.year)}</span><span className="gdiff">{heat(g.diff)} {g.diff===0?"Exact!":dir(g)}</span></div>)}</div>}
       {!submitted&&<div className="eracle-row"><input type="number" className="yinput" placeholder="e.g. 1453 or -44 for BCE" value={guess} onChange={e=>setGuess(e.target.value)} onKeyDown={e=>e.key==="Enter"&&submit()}/><button className="btnp" onClick={submit}>Guess</button></div>}
       {submitted&&result&&(
         <div className={`rcard ${result.win?"win":"lose"}`}>
@@ -523,76 +586,330 @@ function EracleRound({ data, onComplete }) {
   );
 }
 
+function BorderleMap({ geojson }) {
+  const mapRef = useRef(null);
+  const instanceRef = useRef(null);
+
+  useEffect(() => {
+    if (!mapRef.current || instanceRef.current) return;
+
+    // Load Leaflet from CDN dynamically so we don't need a bundler plugin
+    const linkEl = document.createElement('link');
+    linkEl.rel = 'stylesheet';
+    linkEl.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    document.head.appendChild(linkEl);
+
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.onload = () => {
+      const L = window.L;
+
+      const map = L.map(mapRef.current, {
+        zoomControl: false,
+        attributionControl: false,
+        dragging: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        touchZoom: false,
+        keyboard: false,
+      });
+
+      // Minimal greyscale tile layer — muted so the empire stands out
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+        maxZoom: 6,
+      }).addTo(map);
+
+      const layer = L.geoJSON(geojson, {
+        style: {
+          color: '#9b3a1a',
+          weight: 2,
+          fillColor: '#c9942a',
+          fillOpacity: 0.35,
+        },
+      }).addTo(map);
+
+      map.fitBounds(layer.getBounds(), { padding: [24, 24] });
+      instanceRef.current = map;
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      if (instanceRef.current) {
+        instanceRef.current.remove();
+        instanceRef.current = null;
+      }
+    };
+  }, [geojson]);
+
+  return <div ref={mapRef} className="bmap" />;
+}
+
 function BorderleRound({ data, onComplete }) {
   const [attempts, setAttempts] = useState(0);
   const [guessed, setGuessed] = useState([]);
   const [selected, setSelected] = useState(null);
   const [result, setResult] = useState(null);
   const submitted = !!result;
-  const [shuffled] = useState(()=>{ const rng=seededRandom(getTodaySeed()+99); return [...data.options].sort(()=>rng()-0.5); });
+  const [shuffled] = useState(() => {
+    const rng = seededRandom(getTodaySeed() + 99);
+    return [...data.options].sort(() => rng() - 0.5);
+  });
 
   const go = () => {
-    if(!selected)return;
-    const ok=selected===data.empire_name; const na=attempts+1;
-    setAttempts(na); setGuessed(g=>[...g,selected]); setSelected(null);
-    if(ok||na>=5)setResult({win:ok,score:borderleScore(na)});
+    if (!selected) return;
+    const ok = selected === data.empire_name;
+    const na = attempts + 1;
+    setAttempts(na);
+    setGuessed(g => [...g, selected]);
+    setSelected(null);
+    if (ok || na >= 5) setResult({ win: ok, score: borderleScore(na) });
   };
 
-  const cluesV=Math.min(attempts+1,data.clues.length);
-  const avail=shuffled.filter(o=>!guessed.includes(o));
+  const avail = shuffled.filter(o => !guessed.includes(o));
 
   return (
     <div className="round-wrap">
-      <div className="rh"><span className="rbadge">03</span><div><h2 className="rtitle">Borderle</h2><p className="rsub">Identify this historical empire or kingdom</p></div></div>
-      <div className="bperiod"><span className="plabel">Time Period</span><span className="pval">{data.time_period}</span></div>
-      <div className="clues">
-        {data.clues.slice(0,cluesV).map((c,i)=>(
-          <div key={i} className={`clue ${i===attempts&&!submitted?"clue-active":""}`}>
-            <span className="cnum">Clue {i+1}</span><span>{c}</span>
-          </div>
-        ))}
+      <div className="rh">
+        <span className="rbadge">03</span>
+        <div>
+          <h2 className="rtitle">Borderle</h2>
+          <p className="rsub">Which empire held these borders?</p>
+        </div>
       </div>
-      {guessed.length>0&&<div className="wguesses">{guessed.map((g,i)=><span key={i} className={`wbadge ${g===data.empire_name?"cbadge":""}`}>{g}</span>)}</div>}
-      {!submitted&&<>
-        <div className="ogrid">{avail.map(o=><button key={o} className={`obtn ${selected===o?"sel":""}`} onClick={()=>setSelected(o===selected?null:o)}>{o}</button>)}</div>
-        <div className="arow"><span className="aleft">{5-attempts} guess{5-attempts!==1?"es":""} left</span><button className="btnp" onClick={go} disabled={!selected}>Confirm Guess</button></div>
-      </>}
-      {submitted&&result&&(
-        <div className={`rcard ${result.win?"win":"lose"}`}>
-          <div className="ricon">{result.win?"🗺️":"🏚️"}</div>
-          <p className="rtext">{result.win?"Correct!":"It was the "+data.empire_name+"."}</p>
+
+      <div className="bperiod">
+        <span className="plabel">Time Period</span>
+        <span className="pval">{data.year_label || data.time_period}</span>
+      </div>
+
+      <BorderleMap geojson={data.geojson} />
+
+      {guessed.length > 0 && (
+        <div className="wguesses">
+          {guessed.map((g, i) => (
+            <span key={i} className={`wbadge ${g === data.empire_name ? "cbadge" : ""}`}>{g}</span>
+          ))}
+        </div>
+      )}
+
+      {!submitted && (
+        <>
+          <div className="ogrid">
+            {avail.map(o => (
+              <button key={o} className={`obtn ${selected === o ? "sel" : ""}`}
+                onClick={() => setSelected(o === selected ? null : o)}>{o}</button>
+            ))}
+          </div>
+          <div className="arow">
+            <span className="aleft">{5 - attempts} guess{5 - attempts !== 1 ? "es" : ""} left</span>
+            <button className="btnp" onClick={go} disabled={!selected}>Confirm Guess</button>
+          </div>
+        </>
+      )}
+
+      {submitted && result && (
+        <div className={`rcard ${result.win ? "win" : "lose"}`}>
+          <div className="ricon">{result.win ? "🗺️" : "🏚️"}</div>
+          <p className="rtext">{result.win ? "Correct!" : `It was the ${data.empire_name}.`}</p>
           <p className="ereveal">{data.empire_name}</p>
           <p className="eexp">{data.fun_fact}</p>
           <p className="rscore">+{result.score} pts</p>
-          <button className="btnn" onClick={()=>onComplete(result.score)}>See Results →</button>
+          <button className="btnn" onClick={() => onComplete(result.score)}>See Results →</button>
         </div>
       )}
     </div>
   );
 }
 
+function figurleScore(attempts) { return [1000,700,400,100][Math.min(attempts-1,3)]; }
+function duelleScore(correct) { return correct * 200; }
+
+function FigurleRound({ data, onComplete }) {
+  const [attempts, setAttempts] = useState(0);
+  const [guessed, setGuessed] = useState([]);
+  const [selected, setSelected] = useState(null);
+  const [clueIdx, setClueIdx] = useState(0);
+  const [result, setResult] = useState(null);
+  const submitted = !!result;
+  const [shuffled] = useState(() => {
+    const rng = seededRandom(getTodaySeed() + 77);
+    return [...data.options].sort(() => rng() - 0.5);
+  });
+
+  const go = () => {
+    if (!selected) return;
+    const ok = selected === data.name;
+    const na = attempts + 1;
+    setAttempts(na);
+    setGuessed(g => [...g, selected]);
+    setSelected(null);
+    if (ok || na >= 3) {
+      setResult({ win: ok, score: figurleScore(na) });
+    } else {
+      setClueIdx(Math.min(clueIdx + 1, data.clues.length - 1));
+    }
+  };
+
+  const avail = shuffled.filter(o => !guessed.includes(o));
+  const lifespan = data.birth_year && data.death_year
+    ? `${fmtYear(data.birth_year)} – ${fmtYear(data.death_year)}`
+    : null;
+
+  return (
+    <div className="round-wrap">
+      <div className="rh">
+        <span className="rbadge">04</span>
+        <div><h2 className="rtitle">Figurle</h2><p className="rsub">Who is this historical figure?</p></div>
+      </div>
+      <div className="clues">
+        {data.clues.slice(0, submitted ? data.clues.length : clueIdx + 1).map((c, i) => (
+          <div key={i} className={`clue ${i === clueIdx && !submitted ? "clue-active" : ""}`}>
+            <span className="cnum">Clue {i + 1}</span><span>{c}</span>
+          </div>
+        ))}
+      </div>
+      {guessed.length > 0 && (
+        <div className="wguesses">
+          {guessed.map((g, i) => (
+            <span key={i} className={`wbadge ${g === data.name ? "cbadge" : ""}`}>{g}</span>
+          ))}
+        </div>
+      )}
+      {!submitted && (
+        <>
+          <div className="ogrid">
+            {avail.map(o => (
+              <button key={o} className={`obtn ${selected === o ? "sel" : ""}`}
+                onClick={() => setSelected(o === selected ? null : o)}>{o}</button>
+            ))}
+          </div>
+          <div className="arow">
+            <span className="aleft">{3 - attempts} attempt{3 - attempts !== 1 ? "s" : ""} left</span>
+            <button className="btnp" onClick={go} disabled={!selected}>Confirm Guess</button>
+          </div>
+        </>
+      )}
+      {submitted && result && (
+        <div className={`rcard ${result.win ? "win" : "lose"}`}>
+          <div className="ricon">{result.win ? "🧠" : "👤"}</div>
+          <p className="rtext">{result.win ? "Correct!" : `It was ${data.name}.`}</p>
+          <p className="ereveal">{data.name}</p>
+          {lifespan && <p className="eexp" style={{marginBottom:'0.3rem'}}>{lifespan}</p>}
+          <p className="eexp">{data.fun_fact}</p>
+          <p className="rscore">+{result.score} pts</p>
+          <button className="btnn" onClick={() => onComplete(result.score)}>Next Round →</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function DuelleRound({ data, onComplete }) {
+  const [current, setCurrent] = useState(0);
+  const [correct, setCorrect] = useState(0);
+  const [chosen, setChosen] = useState(null);
+  const [showResult, setShowResult] = useState(false);
+  const [done, setDone] = useState(false);
+  const [totalCorrect, setTotalCorrect] = useState(0);
+
+  const pairs = data.pairs;
+  const pair = pairs[current];
+  const earlier = pair.a.year <= pair.b.year ? 'a' : 'b';
+
+  const pick = (choice) => {
+    if (chosen) return;
+    const isRight = choice === earlier;
+    setChosen(choice);
+    setShowResult(true);
+    const newCorrect = correct + (isRight ? 1 : 0);
+    setTimeout(() => {
+      if (current + 1 >= pairs.length) {
+        setTotalCorrect(newCorrect);
+        setDone(true);
+      } else {
+        setCurrent(c => c + 1);
+        setChosen(null);
+        setShowResult(false);
+        setCorrect(newCorrect);
+      }
+    }, 1100);
+  };
+
+  if (done) {
+    const score = duelleScore(totalCorrect);
+    return (
+      <div className="round-wrap">
+        <div className="rh">
+          <span className="rbadge">05</span>
+          <div><h2 className="rtitle">Duelle</h2><p className="rsub">Which came first?</p></div>
+        </div>
+        <div className="rcard win">
+          <div className="ricon">⚔️</div>
+          <p className="rtext">You got <strong>{totalCorrect} of {pairs.length}</strong> correct!</p>
+          <p className="rscore">+{score} pts</p>
+          <button className="btnn" onClick={() => onComplete(score)}>See Results →</button>
+        </div>
+      </div>
+    );
+  }
+
+  const getStyle = (side) => {
+    if (!showResult) return '';
+    if (side === earlier) return 'duel-correct';
+    if (side === chosen) return 'duel-wrong';
+    return '';
+  };
+
+  return (
+    <div className="round-wrap">
+      <div className="rh">
+        <span className="rbadge">05</span>
+        <div><h2 className="rtitle">Duelle</h2><p className="rsub">Tap which event came first</p></div>
+      </div>
+      <div className="duel-progress">
+        {pairs.map((_, i) => (
+          <div key={i} className={`duel-pip ${i < current ? "done" : i === current ? "active" : ""}`} />
+        ))}
+      </div>
+      <div className="duel-arena">
+        <button className={`duel-card ${getStyle('a')}`} onClick={() => pick('a')} disabled={!!chosen}>
+          <span className="duel-text">{pair.a.text}</span>
+          {showResult && <span className="duel-year">{fmtYear(pair.a.year)}</span>}
+        </button>
+        <div className="duel-vs">VS</div>
+        <button className={`duel-card ${getStyle('b')}`} onClick={() => pick('b')} disabled={!!chosen}>
+          <span className="duel-text">{pair.b.text}</span>
+          {showResult && <span className="duel-year">{fmtYear(pair.b.year)}</span>}
+        </button>
+      </div>
+      <p className="duel-score-running">{correct} / {current} correct so far</p>
+    </div>
+  );
+}
+
 function FinalScore({ scores, onShare }) {
-  const total=scores.reduce((a,b)=>a+b,0);
-  const medal=total>=2500?"🥇":total>=1800?"🥈":total>=1000?"🥉":"📜";
-  const label=total>=2500?"Historian Supreme":total>=1800?"Accomplished Scholar":total>=1000?"Apprentice Archivist":"Curious Student";
-  useEffect(()=>{
-    setTimeout(()=>{
-      document.querySelectorAll(".sbar").forEach((b,i)=>{
-        setTimeout(()=>{b.style.width=`${(scores[i]/1000)*100}%`;},i*150);
+  const total = scores.reduce((a, b) => a + b, 0);
+  const max = 5000;
+  const medal = total >= 4200 ? "🥇" : total >= 3000 ? "🥈" : total >= 1800 ? "🥉" : "📜";
+  const label = total >= 4200 ? "Historian Supreme" : total >= 3000 ? "Accomplished Scholar" : total >= 1800 ? "Apprentice Archivist" : "Curious Student";
+  useEffect(() => {
+    setTimeout(() => {
+      document.querySelectorAll(".sbar").forEach((b, i) => {
+        setTimeout(() => { b.style.width = `${(scores[i] / 1000) * 100}%`; }, i * 150);
       });
-    },100);
-  },[]);
+    }, 100);
+  }, []);
   return (
     <div className="final">
       <div className="fmedal">{medal}</div>
       <h2 className="ftitle">{label}</h2>
       <p className="fdate">{todayString()}</p>
-      <div className="fscore"><span className="ftotal">{total}</span><span className="fmax"> / 3000</span></div>
+      <div className="fscore"><span className="ftotal">{total}</span><span className="fmax"> / {max}</span></div>
       <div className="sbreakdown">
-        {["Chronicle","Eracle","Borderle"].map((n,i)=>(
+        {["Chronicle","Eracle","Borderle","Figurle","Duelle"].map((n, i) => (
           <div key={n} className="srow">
             <span className="slabel">{n}</span>
-            <div className="sbarwrap"><div className="sbar" style={{width:0}}/></div>
+            <div className="sbarwrap"><div className="sbar" style={{ width: 0 }} /></div>
             <span className="spts">{scores[i]}</span>
           </div>
         ))}
@@ -613,19 +930,12 @@ export default function Historle() {
   useEffect(() => {
     const dateStr = getTodayDateString();
     fetch(`/puzzles/${dateStr}.json`)
-      .then(r => {
-        if (!r.ok) throw new Error('No puzzle for today yet');
-        return r.json();
-      })
+      .then(r => { if (!r.ok) throw new Error('No puzzle'); return r.json(); })
       .then(data => { setPuzzle(data); setLoading(false); })
-      .catch(() => {
-        // Fall back to the baked-in puzzle bank
-        setPuzzle(getFallbackPuzzle());
-        setLoading(false);
-      });
+      .catch(() => { setPuzzle(getFallbackPuzzle()); setLoading(false); });
   }, []);
 
-  const complete = useCallback(s=>{ setScores(p=>[...p,s]); setRound(r=>r+1); },[]);
+  const complete = useCallback(s => { setScores(p => [...p, s]); setRound(r => r + 1); }, []);
 
   return (
     <>
@@ -641,8 +951,8 @@ export default function Historle() {
         .mtitle span{color:var(--rust);}
         .msub{font-size:0.82rem;color:var(--sep);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.25rem;font-style:italic;}
         .mdate{font-size:0.73rem;color:var(--sepl);margin-top:0.25rem;}
-        .prog{display:flex;justify-content:center;gap:0.5rem;padding:0.7rem;border-bottom:1px solid var(--pd);}
-        .pip{width:2rem;height:4px;border-radius:2px;background:var(--pd);transition:background 0.3s;}
+        .prog{display:flex;justify-content:center;gap:0.4rem;padding:0.7rem;border-bottom:1px solid var(--pd);}
+        .pip{width:1.6rem;height:4px;border-radius:2px;background:var(--pd);transition:background 0.3s;}
         .pip.active{background:var(--gold);}
         .pip.done{background:var(--sage);}
         .main{max-width:640px;margin:0 auto;padding:1.8rem 1.1rem 4rem;}
@@ -655,6 +965,11 @@ export default function Historle() {
         .clist{display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.3rem;}
         .citem{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 0.9rem;background:white;border:1.5px solid var(--pd);border-radius:4px;cursor:grab;user-select:none;touch-action:none;transition:transform 0.15s,box-shadow 0.15s,border-color 0.15s;}
         .citem:hover{border-color:var(--sepl);box-shadow:0 2px 6px var(--sh);}
+        .citem-correct{border-color:var(--sage)!important;background:rgba(61,92,58,0.07)!important;}
+        .citem-wrong{border-color:var(--rust)!important;background:rgba(155,58,26,0.06)!important;}
+        .citem-indicator{font-size:0.9rem;font-weight:700;flex-shrink:0;width:1.1rem;text-align:center;}
+        .citem-correct .citem-indicator{color:var(--sage);}
+        .citem-wrong .citem-indicator{color:var(--rust);}
         .citem.dragging{opacity:0.5;transform:scale(0.97);}
         .dhandle{color:var(--pd);font-size:1rem;flex-shrink:0;}
         .etext{flex:1;font-size:0.94rem;line-height:1.4;}
@@ -673,7 +988,8 @@ export default function Historle() {
         .eracle-row{display:flex;gap:0.55rem;margin-bottom:0.9rem;}
         .yinput{flex:1;padding:0.65rem 0.9rem;font-family:'Crimson Pro',serif;font-size:1rem;border:1.5px solid var(--pd);border-radius:4px;background:white;color:var(--ink);outline:none;transition:border-color 0.2s;}
         .yinput:focus{border-color:var(--gold);}
-        .bperiod{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.9rem;background:var(--ink);color:var(--parch);border-radius:4px;margin-bottom:1.1rem;}
+        .bperiod{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.9rem;background:var(--ink);color:var(--parch);border-radius:4px;margin-bottom:0.9rem;}
+        .bmap{width:100%;height:280px;border-radius:6px;border:2px solid var(--pd);margin-bottom:1rem;background:#e8e0d0;overflow:hidden;}
         .plabel{font-size:0.63rem;text-transform:uppercase;letter-spacing:0.12em;opacity:0.6;}
         .pval{font-family:'Playfair Display',serif;font-weight:700;font-size:0.92rem;}
         .wguesses{display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:0.9rem;}
@@ -701,6 +1017,20 @@ export default function Historle() {
         .clist2{text-align:left;margin:0.45rem 0;}
         .ci2{padding:0.25rem 0;font-size:0.86rem;border-bottom:1px solid var(--pd);}
         .ci2 span{font-family:'Playfair Display',serif;font-weight:700;color:var(--sep);margin-right:0.35rem;}
+        .duel-progress{display:flex;gap:0.4rem;margin-bottom:1.2rem;}
+        .duel-pip{flex:1;height:4px;border-radius:2px;background:var(--pd);transition:background 0.3s;}
+        .duel-pip.active{background:var(--gold);}
+        .duel-pip.done{background:var(--sage);}
+        .duel-arena{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:0.8rem;}
+        .duel-card{width:100%;padding:1.1rem;background:white;border:2px solid var(--pd);border-radius:8px;cursor:pointer;font-family:'Crimson Pro',serif;font-size:1rem;text-align:left;transition:all 0.15s;color:var(--ink);display:flex;flex-direction:column;gap:0.3rem;}
+        .duel-card:hover:not(:disabled){border-color:var(--sepl);background:rgba(139,105,20,0.04);transform:translateY(-1px);}
+        .duel-card:disabled{cursor:default;}
+        .duel-card.duel-correct{border-color:var(--sage);background:rgba(61,92,58,0.08);}
+        .duel-card.duel-wrong{border-color:var(--rust);background:rgba(155,58,26,0.08);}
+        .duel-text{font-size:0.97rem;line-height:1.4;}
+        .duel-year{font-family:'Playfair Display',serif;font-weight:700;font-size:0.85rem;color:var(--sep);}
+        .duel-vs{text-align:center;font-family:'Playfair Display',serif;font-weight:900;font-size:1rem;color:var(--pd);letter-spacing:0.1em;}
+        .duel-score-running{text-align:center;font-style:italic;color:var(--sep);font-size:0.85rem;}
         .final{text-align:center;padding:0.8rem 0 2rem;animation:fs 0.5s ease;}
         .fmedal{font-size:4rem;margin-bottom:0.35rem;}
         .ftitle{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;margin-bottom:0.2rem;}
@@ -736,38 +1066,59 @@ export default function Historle() {
         .copy-btn{width:100%;padding:0.7rem;background:var(--ink);color:var(--parch);border:none;border-radius:4px;font-family:'Playfair Display',serif;font-size:0.97rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
         .copy-btn:hover{background:var(--sage);}
       `}</style>
+
       <div className="app">
         <header className="mast">
           <h1 className="mtitle">Hist<span>o</span>rle</h1>
           <p className="msub">The Daily History Puzzle</p>
           <p className="mdate">{todayString()}</p>
         </header>
-        {round>0&&round<4&&<div className="prog">{[1,2,3].map(n=><div key={n} className={`pip ${round===n?"active":round>n?"done":""}`}/>)}</div>}
+
+        {round > 0 && round < 6 && (
+          <div className="prog">
+            {[1,2,3,4,5].map(n => (
+              <div key={n} className={`pip ${round === n ? "active" : round > n ? "done" : ""}`} />
+            ))}
+          </div>
+        )}
+
         <main className="main">
-          {loading&&(
+          {loading && (
             <div style={{textAlign:'center',padding:'4rem 0',color:'var(--sep)',fontStyle:'italic'}}>
               Consulting the archives…
             </div>
           )}
-          {!loading&&round===0&&(
+          {!loading && round === 0 && (
             <div className="intro">
               <div className="iorn">📜</div>
               <h2 className="ih">Today's Puzzle Awaits</h2>
-              <p className="ip">Three rounds. Three ways to test your knowledge of world history.</p>
+              <p className="ip">Five rounds of world history. Max 5,000 points.</p>
               <div className="rprev">
-                {[{n:"I",name:"Chronicle",desc:"Arrange 5 events in chronological order"},{n:"II",name:"Eracle",desc:"Guess the year of a historical event"},{n:"III",name:"Borderle",desc:"Identify a historical empire from clues"}].map(r=>(
-                  <div key={r.n} className="rpi"><span className="rpin">{r.n}</span><div className="rpii"><strong>{r.name}</strong><small>{r.desc}</small></div></div>
+                {[
+                  {n:"I",   name:"Chronicle", desc:"Arrange 5 events in chronological order"},
+                  {n:"II",  name:"Eracle",    desc:"Guess the year of a historical event"},
+                  {n:"III", name:"Borderle",  desc:"Identify an empire from its map borders"},
+                  {n:"IV",  name:"Figurle",   desc:"Identify a historical figure from clues"},
+                  {n:"V",   name:"Duelle",    desc:"Pick which of two events came first"},
+                ].map(r => (
+                  <div key={r.n} className="rpi">
+                    <span className="rpin">{r.n}</span>
+                    <div className="rpii"><strong>{r.name}</strong><small>{r.desc}</small></div>
+                  </div>
                 ))}
               </div>
-              <button className="startbtn" onClick={()=>setRound(1)}>Begin →</button>
+              <button className="startbtn" onClick={() => setRound(1)}>Begin →</button>
             </div>
           )}
-          {!loading&&round===1&&<ChronicleRound data={puzzle.chronicle} onComplete={complete}/>}
-          {!loading&&round===2&&<EracleRound data={puzzle.eracle} onComplete={complete}/>}
-          {!loading&&round===3&&<BorderleRound data={puzzle.borderle} onComplete={complete}/>}
-          {!loading&&round===4&&<FinalScore scores={scores} onShare={()=>setShowShare(true)}/>}
+          {!loading && round === 1 && <ChronicleRound data={puzzle.chronicle} onComplete={complete} />}
+          {!loading && round === 2 && <EracleRound    data={puzzle.eracle}    onComplete={complete} />}
+          {!loading && round === 3 && <BorderleRound  data={puzzle.borderle}  onComplete={complete} />}
+          {!loading && round === 4 && <FigurleRound   data={puzzle.figurle}   onComplete={complete} />}
+          {!loading && round === 5 && <DuelleRound    data={puzzle.duelle}    onComplete={complete} />}
+          {!loading && round === 6 && <FinalScore scores={scores} onShare={() => setShowShare(true)} />}
         </main>
-        {showShare&&<ShareModal scores={scores} onClose={()=>setShowShare(false)}/>}
+
+        {showShare && <ShareModal scores={scores} onClose={() => setShowShare(false)} />}
       </div>
     </>
   );
